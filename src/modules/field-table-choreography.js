@@ -7,19 +7,21 @@ gsap.registerPlugin(ScrollTrigger);
  * Setup Section 04: The Bounty Hunter's Field Table Choreography
  * Camera travels across physical workbench: Arrival -> Present -> Prototype -> Solution -> Pitch -> Overview
  */
-export function setupFieldTableChoreography() {
-  const section = document.querySelector('.field-table-section');
-  const stage = document.querySelector('.field-table-pinned-stage');
-  const surface = document.getElementById('field-table-surface');
-  const video = document.getElementById('field-table-video');
-  const dialSteps = document.querySelectorAll('.hud-process-dial .dial-step');
+export function setupFieldTableChoreography(sectionEl = null) {
+  const section = sectionEl || document.querySelector('.field-table-section');
+  if (!section) return null;
 
-  const stationPresent = document.getElementById('station-present');
-  const stationPrototype = document.getElementById('station-prototype');
-  const stationSolution = document.getElementById('station-solution');
-  const stationPitch = document.getElementById('station-pitch');
+  const stage = section.querySelector('.field-table-pinned-stage');
+  const surface = section.querySelector('#field-table-surface');
+  const video = section.querySelector('#field-table-video');
+  const dialSteps = section.querySelectorAll('.hud-process-dial .dial-step');
 
-  if (!section || !stage || !surface) return;
+  const stationPresent = section.querySelector('#station-present');
+  const stationPrototype = section.querySelector('#station-prototype');
+  const stationSolution = section.querySelector('#station-solution');
+  const stationPitch = section.querySelector('#station-pitch');
+
+  if (!stage || !surface) return null;
 
   // Reduced motion check
   const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -48,7 +50,7 @@ export function setupFieldTableChoreography() {
     // Static accessible layout on mobile or reduced motion
     gsap.set(surface, { clearProps: 'all' });
     dialSteps.forEach((s) => s.classList.add('active'));
-    return;
+    return null;
   }
 
   // Camera Centering Math
@@ -68,19 +70,10 @@ export function setupFieldTableChoreography() {
   };
 
   // Coordinated Waypoint Targets
-  // Station 1: PRESENT (Draft Folio)
   const targetPresent = () => getCameraTransform(1500, 330, 1.05);
-
-  // Station 2: PROTOTYPE (Artisan Crafting Hands + Blueprint Mandate)
   const targetPrototype = () => getCameraTransform(650, 700, 0.95);
-
-  // Station 3: SOLUTION (4 Pillars Engineering Dossier)
   const targetSolution = () => getCameraTransform(1430, 860, 0.96);
-
-  // Station 4: PITCH (Sealed Final Verdict Brief)
   const targetPitch = () => getCameraTransform(2150, 640, 1.05);
-
-  // Initial & Final Full Table Overview
   const targetOverview = () => getCameraTransform(1250, 750, getBaseScale());
   const targetArrival = () => getCameraTransform(850, 420, Math.max(getBaseScale() * 1.15, 0.72));
 
@@ -92,7 +85,7 @@ export function setupFieldTableChoreography() {
     scale: initialCam.scale
   });
 
-  // Master Scrub Timeline (23s total duration with dedicated dwell windows)
+  // Master Scrub Timeline
   const tableTimeline = gsap.timeline({
     scrollTrigger: {
       trigger: section,
@@ -117,7 +110,6 @@ export function setupFieldTableChoreography() {
   });
 
   // --- INTERVAL 1: Travel from Arrival to Station 1 (PRESENT) ---
-  // Time: 0.5s -> 3.5s
   tableTimeline.to(surface, {
     x: () => targetPresent().x,
     y: () => targetPresent().y,
@@ -133,10 +125,7 @@ export function setupFieldTableChoreography() {
     duration: 1.5
   }, 1.2);
 
-  // Hold / Dwell on PRESENT from 3.5s to 6.5s (camera stays locked on Station 1)
-
   // --- INTERVAL 2: Glide from Station 1 to Station 2 (PROTOTYPE) ---
-  // Time: 6.5s -> 9.5s
   tableTimeline.to(surface, {
     x: () => targetPrototype().x,
     y: () => targetPrototype().y,
@@ -158,10 +147,7 @@ export function setupFieldTableChoreography() {
     duration: 1.5
   }, 7.2);
 
-  // Hold / Dwell on PROTOTYPE from 9.5s to 12.5s (camera stays locked on craftsman & prototype)
-
   // --- INTERVAL 3: Pan from Station 2 to Station 3 (SOLUTION) ---
-  // Time: 12.5s -> 15.5s
   tableTimeline.to(surface, {
     x: () => targetSolution().x,
     y: () => targetSolution().y,
@@ -183,10 +169,7 @@ export function setupFieldTableChoreography() {
     duration: 1.5
   }, 13.2);
 
-  // Hold / Dwell on SOLUTION from 15.5s to 18.0s (camera stays locked on 4 pillars dossier)
-
   // --- INTERVAL 4: Pan from Station 3 to Station 4 (PITCH) ---
-  // Time: 18.0s -> 20.5s
   tableTimeline.to(surface, {
     x: () => targetPitch().x,
     y: () => targetPitch().y,
@@ -208,10 +191,7 @@ export function setupFieldTableChoreography() {
     duration: 1.5
   }, 18.6);
 
-  // Hold / Dwell on PITCH from 20.5s to 22.0s (camera stays locked on 5-10 min + Q&A and readiness seal)
-
   // --- INTERVAL 5: Pullback to Complete Table Overview ---
-  // Time: 22.0s -> 24.5s
   tableTimeline.to(surface, {
     x: () => targetOverview().x,
     y: () => targetOverview().y,
@@ -226,8 +206,5 @@ export function setupFieldTableChoreography() {
     duration: 1.5
   }, 22.5);
 
-  // Handle Resize
-  window.addEventListener('resize', () => {
-    ScrollTrigger.refresh();
-  });
+  return tableTimeline;
 }
