@@ -1,0 +1,695 @@
+@import './variables.css';
+
+/* ==========================================================================
+   HERO → SECTION 02 TRANSITION & STRUCTURAL HANDOFF
+   ========================================================================== */
+
+/* Environmental Transition Bridge */
+.frontier-transition-bridge {
+  position: relative;
+  width: 100%;
+  margin-top: -8vh; /* Overlap to create seamless depth */
+  z-index: 12;
+}
+
+/* Atmospheric Dust & Gradient Fade */
+.transition-dust-blend {
+  width: 100%;
+  height: 140px;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(20, 16, 14, 0.75) 45%,
+    var(--color-espresso) 100%
+  );
+}
+
+/* Authentic Barbed Wire Frontier Fence */
+.barbed-wire-container {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  height: 60px;
+  margin-top: -30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 14;
+}
+
+.barbed-wire-img {
+  width: 100%;
+  min-width: 1200px;
+  height: auto;
+  object-fit: cover;
+  filter: contrast(1.2) drop-shadow(0 4px 10px rgba(0,0,0,0.8));
+}
+
+/* ==========================================================================
+   02 — WHAT IS SPARKATHON: THE FRONTIER FIELD MANIFESTO
+   ========================================================================== */
+
+.manifesto-section {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  background-color: var(--color-espresso);
+  padding: 3.5rem 1.5rem 8rem 1.5rem;
+  overflow: hidden;
+}
+
+/* Background Panoramic Landscape Layer (ChatGPT Image Sep 13, 2026, 04_05_36 PM.png) */
+.manifesto-landscape-backdrop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 850px;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.manifesto-landscape-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 35%;
+  opacity: 0.22;
+  filter: sepia(0.3) contrast(1.3) brightness(0.65);
+  transform-origin: center center;
+  will-change: transform;
+}
+
+.landscape-vignette-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    var(--color-espresso) 0%,
+    rgba(20, 16, 14, 0.4) 25%,
+    rgba(20, 16, 14, 0.75) 60%,
+    var(--color-espresso) 100%
+  );
+}
+
+.landscape-sun-dust {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 1400px;
+  height: 100%;
+  background: radial-gradient(
+    ellipse at top center,
+    rgba(216, 195, 165, 0.08) 0%,
+    transparent 70%
+  );
+}
+
+/* Composition Wrapper */
+.manifesto-composition-wrap {
+  position: relative;
+  z-index: 3;
+  max-width: 1120px;
+  margin: 0 auto;
+}
+
+/* Editorial Section Stamp / Index Marker */
+.manifesto-section-marker {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.4rem;
+  max-width: 500px;
+  margin: 0 auto 2.4rem auto;
+  position: relative;
+  z-index: 5;
+}
+
+.marker-rule {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--color-gold-muted));
+}
+
+.marker-rule-right {
+  background: linear-gradient(to left, transparent, var(--color-gold-muted));
+}
+
+.marker-content {
+  font-family: var(--font-condensed);
+  font-size: 1.15rem;
+  letter-spacing: 0.28em;
+  color: var(--color-gold-muted);
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.marker-num {
+  color: var(--color-blood-red);
+}
+
+.marker-sep {
+  color: var(--color-clay);
+  opacity: 0.6;
+}
+
+/* ==========================================================================
+   THE FIELD DOCUMENT: UNIFIED PHYSICAL SPREAD
+   ========================================================================== */
+
+.field-document {
+  position: relative;
+  background-color: var(--color-parchment-warm);
+  border: 10px double var(--color-blood-red);
+  box-shadow: 
+    0 0 0 1px var(--color-gold-muted),
+    0 25px 60px rgba(0, 0, 0, 0.85),
+    inset 0 0 45px rgba(184, 93, 59, 0.07);
+  padding: clamp(2rem, 5vw, 4.5rem);
+  color: var(--color-espresso);
+  overflow: hidden;
+}
+
+/* Physical Document Details: Corner Registration Marks */
+.reg-mark {
+  position: absolute;
+  font-family: monospace;
+  font-size: 1.4rem;
+  color: var(--color-gold-muted);
+  opacity: 0.55;
+  line-height: 1;
+  user-select: none;
+}
+
+.reg-tl { top: 12px; left: 14px; }
+.reg-tr { top: 12px; right: 14px; }
+.reg-bl { bottom: 12px; left: 14px; }
+.reg-br { bottom: 12px; right: 14px; }
+
+/* Inked Official Dispatch Stamp in Upper Corner */
+.document-ink-stamp {
+  position: absolute;
+  top: 2.2rem;
+  right: clamp(1.5rem, 4vw, 3.5rem);
+  border: 2px dashed var(--color-blood-red);
+  padding: 0.4rem 0.8rem;
+  transform: rotate(3deg);
+  opacity: 0.85;
+  pointer-events: none;
+  background-color: rgba(139, 0, 0, 0.03);
+  box-shadow: inset 0 0 10px rgba(139, 0, 0, 0.05);
+}
+
+.stamp-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.stamp-org {
+  font-family: var(--font-condensed);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  color: var(--color-blood-red);
+}
+
+.stamp-type {
+  font-family: var(--font-condensed);
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  color: var(--color-espresso);
+}
+
+.stamp-loc {
+  font-family: var(--font-condensed);
+  font-size: 0.6rem;
+  letter-spacing: 0.14em;
+  color: var(--color-clay);
+}
+
+/* Document Header */
+.doc-header {
+  text-align: center;
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.doc-meta-top {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.2rem;
+  margin-bottom: 0.6rem;
+  font-family: var(--font-condensed);
+  font-size: clamp(0.72rem, 1.2vw, 0.86rem);
+  letter-spacing: 0.18em;
+  color: var(--color-clay);
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.doc-stars {
+  color: var(--color-blood-red);
+  letter-spacing: 0.35em;
+  font-size: 0.85rem;
+}
+
+.doc-headline {
+  margin: 0.5rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 0.92;
+}
+
+.headline-sub {
+  font-family: var(--font-condensed);
+  font-size: clamp(1.4rem, 3.4vw, 2.6rem);
+  letter-spacing: 0.24em;
+  color: var(--color-espresso);
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.headline-main {
+  font-family: var(--font-display);
+  font-size: clamp(2.6rem, 6.8vw, 5.8rem);
+  letter-spacing: 0.04em;
+  color: var(--color-blood-red);
+  text-transform: uppercase;
+  text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.12);
+}
+
+.doc-subline {
+  margin-top: 0.8rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.doc-tagline {
+  font-family: var(--font-condensed);
+  font-size: clamp(1rem, 2vw, 1.5rem);
+  letter-spacing: 0.24em;
+  color: var(--color-espresso);
+  font-weight: 700;
+}
+
+.doc-host {
+  font-family: var(--font-condensed);
+  font-size: clamp(0.72rem, 1.3vw, 0.92rem);
+  letter-spacing: 0.16em;
+  color: var(--color-clay);
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+/* Physical Document Hairline Rule */
+.doc-divider-rule {
+  width: 100%;
+  height: 3px;
+  background: repeating-linear-gradient(
+    to right,
+    var(--color-blood-red) 0px,
+    var(--color-blood-red) 16px,
+    transparent 16px,
+    transparent 22px
+  );
+  margin: 1.8rem 0 2.2rem 0;
+  opacity: 0.85;
+}
+
+/* Core Manifesto Narrative */
+.doc-manifesto-body {
+  max-width: 920px;
+  margin: 0 auto 2.5rem auto;
+  text-align: center;
+}
+
+.manifesto-lead {
+  font-family: var(--font-serif);
+  font-size: clamp(1.05rem, 1.8vw, 1.35rem);
+  line-height: 1.6;
+  color: var(--color-espresso);
+  margin-bottom: 1.6rem;
+  font-weight: 400;
+}
+
+.manifesto-criteria-block {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.6rem 1.2rem;
+  margin-top: 0.8rem;
+}
+
+.criteria-pill {
+  background-color: rgba(139, 0, 0, 0.08);
+  color: var(--color-blood-red);
+  border: 1px solid rgba(139, 0, 0, 0.25);
+  padding: 0.35rem 1rem;
+  font-family: var(--font-condensed);
+  font-size: clamp(0.85rem, 1.3vw, 1.05rem);
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  display: inline-block;
+}
+
+/* ==========================================================================
+   THE FRONTIER LEDGER (RULED ROWS OF METADATA — ZERO CARD CLUTTER)
+   ========================================================================== */
+
+.doc-ledger-wrap {
+  margin: 2.5rem 0;
+  border: 2px solid var(--color-espresso);
+  background-color: rgba(244, 239, 234, 0.65);
+}
+
+.ledger-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--color-espresso);
+  color: var(--color-parchment-warm);
+  padding: 0.55rem 1.4rem;
+  font-family: var(--font-condensed);
+  font-size: 0.82rem;
+  letter-spacing: 0.18em;
+  font-weight: 700;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.ledger-rule-meta {
+  color: var(--color-gold-muted);
+}
+
+.doc-ledger-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.ledger-item {
+  padding: 1.3rem 1.5rem;
+  border-bottom: 1px solid rgba(20, 16, 14, 0.16);
+  border-right: 1px solid rgba(20, 16, 14, 0.16);
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.ledger-item:nth-child(3n) {
+  border-right: none;
+}
+
+.ledger-item:nth-last-child(-n+3) {
+  border-bottom: none;
+}
+
+.ledger-label {
+  font-family: var(--font-condensed);
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  color: var(--color-clay);
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.ledger-val {
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 2.3vw, 2.1rem);
+  color: var(--color-espresso);
+  line-height: 1.1;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.ledger-val.highlight-red {
+  color: var(--color-blood-red);
+}
+
+.ledger-sub {
+  font-family: var(--font-condensed);
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  color: #555;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+/* ==========================================================================
+   STRATEGIC GROWTH & VENTURE INCUBATION DOCKET
+   ========================================================================== */
+
+.doc-incubation-docket {
+  margin: 3rem 0 2rem 0;
+  border: 1px solid var(--color-blood-red);
+  background-color: rgba(139, 0, 0, 0.03);
+  position: relative;
+  padding-top: 1.2rem;
+}
+
+.docket-ribbon {
+  position: absolute;
+  top: -0.75rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--color-blood-red);
+  color: var(--color-parchment-warm);
+  padding: 0.25rem 1.4rem;
+  font-family: var(--font-condensed);
+  font-size: 0.8rem;
+  letter-spacing: 0.18em;
+  font-weight: 700;
+  white-space: nowrap;
+  border: 1px solid var(--color-gold-muted);
+}
+
+.docket-content {
+  display: grid;
+  grid-template-columns: 1fr 1px 1fr;
+  padding: 1.4rem 1.6rem;
+  align-items: stretch;
+  gap: 1.4rem;
+}
+
+.docket-divider {
+  background-color: rgba(139, 0, 0, 0.2);
+  width: 1px;
+  height: 100%;
+}
+
+.docket-item {
+  display: flex;
+  gap: 0.9rem;
+  align-items: flex-start;
+}
+
+.docket-num {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  color: var(--color-blood-red);
+  line-height: 1;
+}
+
+.docket-desc {
+  font-family: var(--font-serif);
+  font-size: clamp(0.85rem, 1.2vw, 0.98rem);
+  line-height: 1.5;
+  color: var(--color-espresso);
+}
+
+.docket-desc strong {
+  font-family: var(--font-condensed);
+  font-size: 1.05rem;
+  letter-spacing: 0.06em;
+  color: var(--color-blood-red);
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+/* ==========================================================================
+   DOCUMENT FOOTER: PARTNER PERK SEAL & HANDWRITTEN ANNOTATION
+   ========================================================================== */
+
+.doc-footer {
+  border-top: 1px dashed var(--color-blood-red);
+  padding-top: 1.8rem;
+  margin-top: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.doc-perk-seal {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  border: 2px solid var(--color-blood-red);
+  padding: 0.5rem 1rem;
+  background-color: rgba(139, 0, 0, 0.04);
+}
+
+.seal-badge {
+  background-color: var(--color-blood-red);
+  color: var(--color-parchment-warm);
+  font-family: var(--font-condensed);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  padding: 0.25rem 0.6rem;
+  white-space: nowrap;
+}
+
+.seal-text {
+  font-family: var(--font-condensed);
+  font-size: clamp(0.85rem, 1.2vw, 1.02rem);
+  letter-spacing: 0.06em;
+  color: var(--color-espresso);
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.seal-bold {
+  color: var(--color-blood-red);
+  font-weight: 700;
+}
+
+.seal-tc {
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  color: #666;
+  margin-left: 0.4rem;
+  text-transform: none;
+}
+
+.doc-handwritten-note {
+  font-family: var(--font-handwritten);
+  font-size: clamp(1.1rem, 1.8vw, 1.45rem);
+  color: var(--color-clay);
+  transform: rotate(-1.5deg);
+}
+
+/* ==========================================================================
+   RESPONSIVE FIELD DOCUMENT STYLING
+   ========================================================================== */
+
+@media (max-width: 992px) {
+  .doc-ledger-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .ledger-item:nth-child(2n) {
+    border-right: none;
+  }
+
+  .ledger-item:nth-child(3n) {
+    border-right: 1px solid rgba(20, 16, 14, 0.16);
+  }
+
+  .ledger-item:last-child {
+    border-right: none;
+  }
+
+  .docket-content {
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+  }
+
+  .docket-divider {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .manifesto-section {
+    padding: 2rem 0.8rem 6rem 0.8rem;
+  }
+
+  .field-document {
+    padding: 2.2rem 1.2rem;
+    border-width: 6px;
+  }
+
+  .document-ink-stamp {
+    position: static;
+    margin: 0 auto 1.5rem auto;
+    display: inline-block;
+    transform: rotate(-1deg);
+  }
+
+  .doc-meta-top {
+    flex-wrap: wrap;
+    gap: 0.6rem;
+  }
+
+  .doc-ledger-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .ledger-item {
+    border-right: none !important;
+  }
+
+  .ledger-item:not(:last-child) {
+    border-bottom: 1px solid rgba(20, 16, 14, 0.16) !important;
+  }
+
+  .docket-ribbon {
+    white-space: normal;
+    text-align: center;
+    width: 90%;
+    font-size: 0.72rem;
+    padding: 0.3rem 0.6rem;
+  }
+
+  .doc-footer {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1.2rem;
+  }
+
+  .doc-perk-seal {
+    flex-direction: column;
+    text-align: center;
+    gap: 0.6rem;
+    width: 100%;
+  }
+
+  .doc-handwritten-note {
+    text-align: center;
+  }
+}
+
+/* Reduced Motion Override */
+@media (prefers-reduced-motion: reduce) {
+  .manifesto-landscape-img,
+  .field-document,
+  .manifesto-section-marker,
+  .document-ink-stamp,
+  .doc-headline,
+  .manifesto-lead,
+  .doc-ledger-wrap,
+  .doc-incubation-docket,
+  .doc-perk-seal {
+    transform: none !important;
+    opacity: 1 !important;
+    transition: none !important;
+  }
+}

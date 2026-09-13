@@ -1,0 +1,41 @@
+# Dependencies
+node_modules/
+
+# Production build output
+dist/
+dist-ssr/
+*.local
+
+# Temporary and Scratch Directories
+scratch/
+.tempmediaStorage/
+
+# Reference Documents & PDFs (Local design/source materials)
+*.pdf
+brocuhre.png
+ChatGPT Image*.png
+
+# Source Video Clips (Production video is served from public/assets/video/intro-clip.mp4)
+clips/
+
+# Reference-only assets & temporary extracts in public/
+public/assets/images/timeline-brochure-ref.png
+public/assets/images/X*.png
+public/assets/images/p3_*.png
+
+# Logs and debug artifacts
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# OS and Editor files
+.DS_Store
+Thumbs.db
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+.idea/
+.vscode/

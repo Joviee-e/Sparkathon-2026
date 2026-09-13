@@ -1,0 +1,834 @@
+@import './variables.css';
+
+/* ==========================================================================
+   SECTION 03 — CHOOSE BOUNTY / THE FIVE BOUNTIES (CINEMATIC FRONTIER MAP)
+   ========================================================================== */
+
+/* Overall Section Container: Scroll Track for Camera Movement */
+.bounties-section {
+  position: relative;
+  width: 100%;
+  height: 520vh; /* Deliberate scroll track for smooth cinematic camera pacing */
+  background-color: var(--color-espresso);
+  overflow: visible;
+}
+
+/* Section 02 → Section 03 Transition Bridge */
+.map-transition-bridge {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 120px;
+  background: linear-gradient(
+    to bottom,
+    var(--color-espresso) 0%,
+    rgba(247, 242, 231, 0.08) 50%,
+    transparent 100%
+  );
+  z-index: 10;
+  pointer-events: none;
+}
+
+/* Pinned Viewport Stage */
+.bounties-pinned-stage {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background-color: #161210;
+}
+
+/* ==========================================================================
+   HEADS-UP EDITORIAL OVERLAY (HUD)
+   ========================================================================== */
+
+.bounties-hud-overlay {
+  position: absolute;
+  top: 1.5rem;
+  left: 2rem;
+  right: 2rem;
+  z-index: 25;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  pointer-events: none;
+}
+
+.bounties-hud-left {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  max-width: 650px;
+}
+
+.bounties-marker {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-condensed);
+  font-size: 0.85rem;
+  letter-spacing: 0.22em;
+  color: var(--color-gold-muted);
+  font-weight: 700;
+  background: rgba(20, 16, 14, 0.85);
+  backdrop-filter: blur(4px);
+  padding: 0.25rem 0.85rem;
+  border: 1px solid rgba(197, 160, 89, 0.35);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+  width: fit-content;
+}
+
+.bounties-marker .marker-num {
+  color: var(--color-blood-red);
+}
+
+.bounties-hud-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.2rem, 2.2vw, 1.85rem);
+  letter-spacing: 0.06em;
+  color: var(--color-parchment-warm);
+  text-transform: uppercase;
+  margin: 0.1rem 0;
+  text-shadow: 
+    0 2px 4px rgba(0, 0, 0, 0.9),
+    0 6px 18px rgba(0, 0, 0, 0.7);
+}
+
+.bounties-hud-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.25rem;
+  background: rgba(20, 16, 14, 0.85);
+  backdrop-filter: blur(4px);
+  padding: 0.45rem 1.1rem;
+  border: 1px solid rgba(197, 160, 89, 0.35);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+}
+
+.hud-waypoint-label {
+  font-family: var(--font-condensed);
+  font-size: 0.68rem;
+  letter-spacing: 0.2em;
+  color: var(--color-clay);
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.hud-waypoint-val {
+  font-family: var(--font-display);
+  font-size: clamp(0.95rem, 1.6vw, 1.25rem);
+  letter-spacing: 0.05em;
+  color: var(--color-blood-red);
+  text-transform: uppercase;
+}
+
+/* ==========================================================================
+   THE CAMERA WINDOW & MAP WORLD
+   ========================================================================== */
+
+.bounties-camera-window {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* The Unified 2600px x 1600px Frontier Map World Canvas */
+.bounties-map-world {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 2600px;
+  height: 1600px;
+  background-color: var(--color-parchment-warm);
+  background-image: 
+    radial-gradient(ellipse at center, rgba(247, 242, 231, 0.98) 0%, rgba(216, 195, 165, 0.88) 65%, rgba(184, 93, 59, 0.5) 100%);
+  border: 16px double var(--color-espresso);
+  box-shadow: 
+    0 0 0 2px var(--color-gold-muted),
+    0 30px 90px rgba(0, 0, 0, 0.95),
+    inset 0 0 100px rgba(20, 16, 14, 0.25);
+  transform-origin: 0 0;
+  will-change: transform;
+}
+
+/* ==========================================================================
+   MAP BASE LAYER (ARTWORK SLOT + STRUCTURAL TERRAIN FALLBACK)
+   ========================================================================== */
+
+.map-base-layer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+/* Drop-in slot for the future final approved map artwork */
+.map-artwork-slot {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  opacity: 0; /* Becomes 1 if asset exists */
+  z-index: 1;
+}
+
+/* Structural Map Layer: Contours, Grid, Canyons, Outposts */
+.map-structural-layer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+}
+
+.map-dependency-watermark {
+  position: absolute;
+  bottom: 24px;
+  left: 32px;
+  font-family: var(--font-condensed);
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+  color: rgba(184, 93, 59, 0.55);
+  text-transform: uppercase;
+  font-weight: 700;
+  z-index: 5;
+  user-select: none;
+}
+
+/* SVG Vector Topographical Terrain */
+.map-terrain-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+}
+
+/* SVG Terrain Style Rules */
+.map-grid-line {
+  stroke: rgba(197, 160, 89, 0.25);
+  stroke-width: 1;
+  stroke-dasharray: 4 6;
+}
+
+.map-contour-line {
+  fill: none;
+  stroke: rgba(184, 93, 59, 0.32);
+  stroke-width: 1.3;
+}
+
+.map-canyon-ridge {
+  fill: none;
+  stroke: rgba(20, 16, 14, 0.45);
+  stroke-width: 2.2;
+  stroke-dasharray: 8 3 2 3;
+}
+
+.map-riverbed {
+  fill: none;
+  stroke: rgba(70, 95, 120, 0.28);
+  stroke-width: 3.5;
+  stroke-linecap: round;
+}
+
+.map-territory-border {
+  fill: none;
+  stroke: var(--color-blood-red);
+  stroke-width: 2.5;
+  stroke-dasharray: 12 6;
+  opacity: 0.6;
+}
+
+.map-terrain-label {
+  font-family: var(--font-condensed);
+  font-size: 14px;
+  letter-spacing: 0.25em;
+  fill: rgba(20, 16, 14, 0.4);
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+/* Compass Rose on Map */
+.map-compass-container {
+  position: absolute;
+  top: 50px;
+  left: 50px;
+  width: 240px;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.map-compass-img {
+  width: 100%;
+  height: auto;
+  filter: sepia(0.3) contrast(1.2) drop-shadow(0 4px 15px rgba(0, 0, 0, 0.3));
+}
+
+/* Scale & Map Inscription */
+.map-scale-legend {
+  position: absolute;
+  top: 65px;
+  right: 80px;
+  border: 1px solid var(--color-gold-muted);
+  background: rgba(244, 239, 234, 0.85);
+  padding: 0.5rem 1.2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  z-index: 5;
+}
+
+.scale-legend-title {
+  font-family: var(--font-condensed);
+  font-size: 0.7rem;
+  letter-spacing: 0.22em;
+  color: var(--color-blood-red);
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.scale-bar {
+  width: 130px;
+  height: 5px;
+  background: repeating-linear-gradient(
+    to right,
+    var(--color-espresso) 0px,
+    var(--color-espresso) 32px,
+    var(--color-parchment-warm) 32px,
+    var(--color-parchment-warm) 65px
+  );
+  border: 1px solid var(--color-espresso);
+}
+
+.scale-units {
+  font-family: var(--font-condensed);
+  font-size: 0.62rem;
+  letter-spacing: 0.15em;
+  color: var(--color-clay);
+  font-weight: 600;
+}
+
+/* ==========================================================================
+   THE RED EXPEDITION ROUTE (INKED TRAIL)
+   ========================================================================== */
+
+.map-route-layer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 6;
+  pointer-events: none;
+}
+
+.expedition-trail-base {
+  fill: none;
+  stroke: rgba(139, 0, 0, 0.2);
+  stroke-width: 5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.expedition-trail-active {
+  fill: none;
+  stroke: var(--color-blood-red);
+  stroke-width: 5.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 12 7;
+  filter: drop-shadow(0 2px 5px rgba(139, 0, 0, 0.4));
+  transition: stroke-dashoffset 0.05s linear;
+}
+
+/* ==========================================================================
+   CHECKPOINT STATIONS & EDITORIAL MAP ANNOTATIONS
+   ========================================================================== */
+
+.map-checkpoints-layer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 8;
+}
+
+.map-checkpoint {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.4s ease-out;
+}
+
+/* Checkpoint Coordinates in 2600 x 1600 Map Space */
+.checkpoint-01 { left: 500px; top: 520px; }
+.checkpoint-02 { left: 1120px; top: 380px; }
+.checkpoint-03 { left: 1500px; top: 840px; }
+.checkpoint-04 { left: 960px; top: 1220px; }
+.checkpoint-05 { left: 2180px; top: 920px; }
+
+/* The Physical Marker Pin (Inked X in Circle) */
+.checkpoint-marker-pin {
+  position: relative;
+  width: 52px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: default;
+}
+
+.marker-beacon {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-color: rgba(139, 0, 0, 0.2);
+  border: 1px dashed var(--color-blood-red);
+  animation: beaconPulse 2.4s infinite ease-out;
+}
+
+@keyframes beaconPulse {
+  0% { transform: scale(0.9); opacity: 0.8; }
+  100% { transform: scale(1.6); opacity: 0; }
+}
+
+.marker-disc {
+  position: relative;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background-color: var(--color-parchment-warm);
+  border: 3px solid var(--color-blood-red);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.45);
+}
+
+.marker-x {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  color: var(--color-blood-red);
+  line-height: 1;
+  font-weight: 700;
+}
+
+/* Editorial Map Annotation Card */
+.checkpoint-annotation {
+  position: absolute;
+  top: 55px;
+  min-width: 270px;
+  max-width: 310px;
+  background-color: var(--color-parchment-warm);
+  border: 2px solid var(--color-blood-red);
+  padding: 0.85rem 1.1rem;
+  box-shadow: 
+    0 0 0 1px var(--color-gold-muted),
+    0 12px 30px rgba(0, 0, 0, 0.4);
+  opacity: 0;
+  transform: translateY(12px) scale(0.95);
+  transition: opacity 0.45s ease-out, transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: auto;
+}
+
+.map-checkpoint.active .checkpoint-annotation {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.map-checkpoint.active .marker-disc {
+  background-color: var(--color-blood-red);
+}
+
+.map-checkpoint.active .marker-x {
+  color: var(--color-parchment-warm);
+}
+
+.annot-top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(139, 0, 0, 0.25);
+  padding-bottom: 0.3rem;
+  margin-bottom: 0.4rem;
+}
+
+.annot-code {
+  font-family: var(--font-condensed);
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  color: var(--color-blood-red);
+  font-weight: 700;
+}
+
+.annot-coords {
+  font-family: var(--font-condensed);
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  color: var(--color-clay);
+  font-weight: 600;
+}
+
+.annot-domain-title {
+  font-family: var(--font-condensed);
+  font-size: 1.2rem;
+  line-height: 1.15;
+  letter-spacing: 0.08em;
+  color: var(--color-espresso);
+  font-weight: 700;
+  text-transform: uppercase;
+  margin: 0.2rem 0;
+}
+
+.annot-subtitle {
+  font-family: var(--font-serif);
+  font-size: 0.8rem;
+  line-height: 1.35;
+  color: #444;
+  font-style: italic;
+  margin-top: 0.3rem;
+}
+
+/* Individual Annotation Anchors to prevent overlap */
+.checkpoint-01 .checkpoint-annotation {
+  left: 0;
+  top: 55px;
+}
+
+.checkpoint-02 .checkpoint-annotation {
+  left: 0;
+  top: 55px;
+}
+
+.checkpoint-03 .checkpoint-annotation {
+  left: 45px;
+  top: -20px;
+}
+
+.checkpoint-04 .checkpoint-annotation {
+  left: 45px;
+  top: -20px;
+}
+
+/* ==========================================================================
+   DESTINATION 05 — THE UNKNOWN FRONTIER (CLIMAX BREAKOUT)
+   ========================================================================== */
+
+.checkpoint-05 .checkpoint-annotation {
+  min-width: 320px;
+  max-width: 350px;
+  left: 0;
+  top: 55px;
+  border: 2px solid #8B0000;
+  background-color: #2b0b08;
+  color: var(--color-parchment-warm);
+  box-shadow: 
+    0 0 0 1px var(--color-gold-muted),
+    0 15px 40px rgba(0, 0, 0, 0.7);
+}
+
+.checkpoint-05 .annot-code {
+  color: var(--color-gold-muted);
+}
+
+.checkpoint-05 .annot-coords {
+  color: #d8c3a5;
+}
+
+.checkpoint-05 .annot-domain-title {
+  color: #fff;
+  font-size: 1.3rem;
+}
+
+.checkpoint-05 .annot-subtitle {
+  color: var(--color-parchment);
+}
+
+/* The Unknown Frontier Boundary Zone */
+.unknown-frontier-zone {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 800px;
+  height: 1600px;
+  z-index: 4;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+/* Torn Map Edge Partition */
+.unknown-frontier-tear {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 24px;
+  height: 100%;
+  background: repeating-linear-gradient(
+    to bottom,
+    var(--color-espresso) 0px,
+    transparent 12px,
+    var(--color-blood-red) 24px
+  );
+  opacity: 0.4;
+}
+
+/* Approved Wild Horses Crimson Sky Backdrop (open-innovation-frame.png) */
+.unknown-frontier-backdrop {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('/assets/images/open-innovation-frame.png');
+  background-size: cover;
+  background-position: center left;
+  opacity: 0.35;
+  filter: contrast(1.3) brightness(0.7);
+  mix-blend-mode: multiply;
+}
+
+.unknown-frontier-vignette {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(20, 16, 14, 0.6) 40%,
+    rgba(20, 16, 14, 0.95) 100%
+  );
+}
+
+.unknown-frontier-stamp {
+  position: absolute;
+  top: 120px;
+  right: 90px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  border: 3px dashed var(--color-blood-red);
+  padding: 0.7rem 1.6rem;
+  background: rgba(20, 16, 14, 0.85);
+  transform: rotate(2.5deg);
+  z-index: 6;
+}
+
+.unknown-stamp-label {
+  font-family: var(--font-condensed);
+  font-size: 0.8rem;
+  letter-spacing: 0.25em;
+  color: var(--color-gold-muted);
+  font-weight: 700;
+}
+
+.unknown-stamp-title {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  letter-spacing: 0.08em;
+  color: var(--color-blood-red);
+  text-transform: uppercase;
+  margin: 0.2rem 0;
+}
+
+.unknown-stamp-sub {
+  font-family: var(--font-handwritten);
+  font-size: 1.2rem;
+  color: var(--color-parchment);
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN: MOBILE VERTICAL FRONTIER JOURNEY
+   ========================================================================== */
+
+@media (max-width: 992px) {
+  .bounties-hud-overlay {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.6rem;
+    left: 1.5rem;
+    right: 1.5rem;
+    top: 1rem;
+  }
+
+  .bounties-hud-right {
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 768px) {
+  /* On mobile: Transform into an intentional vertical frontier map journey */
+  .bounties-section {
+    height: auto !important;
+    min-height: 100vh;
+    padding: 2.5rem 1rem 5rem 1rem;
+    overflow: hidden;
+  }
+
+  .bounties-pinned-stage {
+    position: relative !important;
+    top: auto;
+    left: auto;
+    width: 100%;
+    height: auto;
+    overflow: visible;
+    background: transparent;
+  }
+
+  .bounties-hud-overlay {
+    position: relative;
+    top: auto;
+    left: auto;
+    right: auto;
+    width: 100%;
+    margin-bottom: 1.8rem;
+    flex-direction: column;
+    gap: 0.6rem;
+    pointer-events: auto;
+  }
+
+  .bounties-hud-title {
+    font-size: 1.35rem;
+  }
+
+  .bounties-camera-window {
+    position: relative;
+    width: 100%;
+    height: auto;
+    overflow: visible;
+    display: block;
+  }
+
+  .bounties-map-world {
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    width: 100% !important;
+    height: auto !important;
+    transform: none !important;
+    padding: 2rem 1.2rem 2.5rem 1.2rem;
+    border-width: 6px;
+    box-sizing: border-box;
+  }
+
+  .map-structural-layer {
+    opacity: 0.12;
+  }
+
+  .map-compass-container {
+    top: 12px;
+    right: 12px;
+    left: auto;
+    width: 90px;
+  }
+
+  .map-scale-legend {
+    display: none;
+  }
+
+  .map-route-layer {
+    display: none;
+  }
+
+  .map-checkpoints-layer {
+    position: relative;
+    inset: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1.8rem;
+    margin-top: 1.5rem;
+    padding-left: 1.5rem;
+    border-left: 3px dashed var(--color-blood-red);
+  }
+
+  .map-checkpoint {
+    position: relative;
+    left: auto !important;
+    top: auto !important;
+    transform: none !important;
+    width: 100%;
+    align-items: flex-start;
+  }
+
+  .checkpoint-marker-pin {
+    width: 32px;
+    height: 32px;
+    position: absolute;
+    left: -2.35rem;
+    top: 0.2rem;
+  }
+
+  .marker-disc {
+    width: 28px;
+    height: 28px;
+    background-color: var(--color-blood-red);
+  }
+
+  .marker-x {
+    font-size: 1rem;
+    color: var(--color-parchment-warm);
+  }
+
+  .checkpoint-annotation {
+    position: relative;
+    top: auto;
+    left: auto !important;
+    min-width: 100%;
+    max-width: 100%;
+    opacity: 1 !important;
+    transform: none !important;
+    padding: 0.8rem 1rem;
+    box-sizing: border-box;
+  }
+
+  .annot-domain-title {
+    font-size: 1.15rem;
+  }
+
+  .unknown-frontier-zone {
+    display: none;
+  }
+
+  .checkpoint-05 .checkpoint-annotation {
+    background-color: #2b0b08;
+    color: var(--color-parchment-warm);
+  }
+}
+
+/* Reduced Motion Override */
+@media (prefers-reduced-motion: reduce) {
+  .bounties-section {
+    height: auto !important;
+  }
+
+  .bounties-pinned-stage {
+    position: relative !important;
+    height: auto !important;
+  }
+
+  .bounties-map-world {
+    transform: none !important;
+  }
+
+  .checkpoint-annotation {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  .marker-beacon {
+    animation: none !important;
+  }
+}

@@ -1,0 +1,51 @@
+:root {
+  /* Core Color Palette: The Western Frontier */
+  --color-blood-red: #8B0000;
+  --color-crimson: #9E0000;
+  --color-dark-red: #580000;
+  --color-bright-red: #B21818;
+  
+  --color-parchment: #F4EFEA;
+  --color-parchment-warm: #F7F2E7;
+  --color-parchment-aged: #ECE4D8;
+  --color-parchment-dark: #DECDB8;
+
+  --color-espresso: #14100E;
+  --color-charcoal: #1F1A17;
+  --color-black: #0A0807;
+  --color-ink: #181210;
+
+  --color-gold-muted: #C5A059;
+  --color-brass: #D4AF37;
+  --color-gold-antique: #A38038;
+
+  --color-sand: #D8C3A5;
+  --color-clay: #B85D3B;
+  --color-dust: rgba(216, 195, 165, 0.4);
+
+  /* Typography Stack */
+  --font-display: 'Rye', serif;
+  --font-display-alt: 'Sancreek', serif;
+  --font-condensed: 'Bebas Neue', 'Oswald', -apple-system, sans-serif;
+  --font-editorial: 'Oswald', sans-serif;
+  --font-subhead: 'Cinzel', serif;
+  --font-body: 'Lora', Georgia, serif;
+  --font-sans: 'Outfit', sans-serif;
+  --font-script: 'Caveat', cursive;
+  --font-stamp: 'Rock Salt', cursive;
+
+  /* Layering Z-Indices */
+  --z-background: 1;
+  --z-video: 2;
+  --z-canyon-grade: 3;
+  --z-dust: 4;
+  --z-title: 5;
+  --z-letterbox: 10;
+  --z-film-grain: 20;
+  --z-ui: 30;
+
+  /* Cinema Geometry */
+  --letterbox-height: 8vh;
+  --transition-smooth: cubic-bezier(0.22, 1, 0.36, 1);
+  --transition-cinematic: cubic-bezier(0.16, 1, 0.3, 1);
+}

@@ -1,0 +1,367 @@
+@import './variables.css';
+
+/* ==========================================================================
+   01 — CINEMATIC HERO SECTION
+   ========================================================================== */
+
+.hero-section {
+  position: relative;
+  width: 100%;
+  height: 280vh; /* Scroll runway for reversible cinematic choreography */
+  background-color: var(--color-black);
+}
+
+.hero-stage {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-black);
+}
+
+/* Opening Blackout Screen */
+.hero-blackout {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #000000;
+  z-index: 15;
+  pointer-events: none;
+  opacity: 1; /* Scrubbed by GSAP from 1 to 0 */
+}
+
+/* Anamorphic 2.39:1 Letterbox Bars */
+.letterbox-bar {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 9vh;
+  background-color: #000000;
+  z-index: var(--z-letterbox);
+  pointer-events: none;
+  transition: transform 0.2s ease;
+}
+
+.letterbox-top {
+  top: 0;
+  border-bottom: 1px solid rgba(197, 160, 89, 0.2);
+}
+
+.letterbox-bottom {
+  bottom: 0;
+  border-top: 1px solid rgba(197, 160, 89, 0.2);
+}
+
+/* Video Canvas & Environment */
+.hero-video-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: var(--z-video);
+  overflow: hidden;
+}
+
+.hero-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 40%;
+  filter: contrast(1.08) saturate(0.92) brightness(0.94);
+  transform: scale(1.02);
+}
+
+/* Vintage Warm Canyon Color Grade & Vignette */
+.hero-grade-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: var(--z-canyon-grade);
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(216, 195, 165, 0.05) 0%,
+    rgba(20, 16, 14, 0.45) 75%,
+    rgba(10, 8, 7, 0.85) 100%
+  );
+  mix-blend-mode: multiply;
+}
+
+/* Canvas for Interactive Swirling Canyon Dust */
+.hero-dust-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: var(--z-dust);
+  pointer-events: none;
+  opacity: 0.75;
+}
+
+/* ==========================================================================
+   HERO TYPOGRAPHY CHOREOGRAPHY
+   ========================================================================== */
+
+.hero-choreo-container {
+  position: relative;
+  z-index: var(--z-title);
+  width: 90%;
+  max-width: 1300px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  pointer-events: auto;
+  transform-origin: center center;
+}
+
+/* Top Badge: E-CELL FCRIT PRESENTS */
+.hero-presents-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 1.2rem;
+  background-color: var(--color-blood-red);
+  color: var(--color-parchment-warm);
+  padding: 0.45rem 1.8rem;
+  border: 1px solid var(--color-gold-muted);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+  margin-bottom: 1.2rem;
+  position: relative;
+}
+
+.hero-presents-badge .badge-text {
+  font-family: var(--font-display);
+  font-size: clamp(0.75rem, 1.4vw, 1.05rem);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.hero-presents-badge .badge-star {
+  color: var(--color-brass);
+  font-size: 0.85rem;
+}
+
+/* The Halftone Bronco Watermark Backdrop */
+.hero-bronco-watermark {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -52%);
+  width: clamp(280px, 45vw, 550px);
+  opacity: 0.18;
+  pointer-events: none;
+  z-index: -1;
+  filter: contrast(1.4) drop-shadow(0 0 20px rgba(0,0,0,0.8));
+}
+
+/* Main Display Title: SPARKATHON */
+.hero-title-lockup {
+  position: relative;
+  margin: 0.5rem 0;
+  width: 100%;
+}
+
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 9.6vw, 9.8rem);
+  line-height: 0.95;
+  letter-spacing: 0.04em;
+  color: var(--color-parchment-warm);
+  text-transform: uppercase;
+  position: relative;
+  display: inline-block;
+  
+  /* Authentic Wood-Type Dimensional Shadow */
+  text-shadow: 
+    -2px -2px 0 var(--color-blood-red),
+     2px -2px 0 var(--color-blood-red),
+    -2px  2px 0 var(--color-blood-red),
+     2px  2px 0 var(--color-blood-red),
+     0 6px 0 var(--color-dark-red),
+     0 12px 18px rgba(0, 0, 0, 0.9);
+}
+
+.hero-title .title-char {
+  display: inline-block;
+  position: relative;
+}
+
+/* Sub-Heading / Tagline */
+.hero-tagline {
+  font-family: var(--font-condensed);
+  font-size: clamp(1.1rem, 2.5vw, 2.2rem);
+  letter-spacing: 0.28em;
+  color: var(--color-parchment);
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9);
+  margin-top: 0.8rem;
+  font-weight: 600;
+}
+
+/* Meta Data Ribbon: Date, Script Tag, Prize Pool */
+.hero-meta-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 950px;
+  margin-top: 2rem;
+  padding-top: 1.2rem;
+  border-top: 1px solid rgba(197, 160, 89, 0.35);
+  position: relative;
+}
+
+.hero-meta-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hero-meta-label {
+  font-family: var(--font-condensed);
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  color: var(--color-gold-muted);
+  margin-bottom: 0.2rem;
+}
+
+.hero-meta-value {
+  font-family: var(--font-condensed);
+  font-size: clamp(1.1rem, 2vw, 1.6rem);
+  letter-spacing: 0.08em;
+  color: var(--color-parchment-warm);
+}
+
+.hero-meta-value.date {
+  color: var(--color-parchment-warm);
+  font-weight: 700;
+}
+
+.hero-meta-value.prize {
+  color: var(--color-bright-red);
+  text-shadow: 0 2px 10px rgba(178, 24, 24, 0.4);
+  font-weight: 700;
+}
+
+.hero-meta-script {
+  font-family: var(--font-script);
+  font-size: clamp(1.2rem, 2.2vw, 1.8rem);
+  color: var(--color-sand);
+  transform: rotate(-3deg);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+/* Scroll Prompt Indicator */
+.hero-scroll-prompt {
+  position: absolute;
+  bottom: 12vh;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  z-index: var(--z-title);
+  pointer-events: none;
+  opacity: 0.85;
+}
+
+.scroll-prompt-text {
+  font-family: var(--font-condensed);
+  font-size: 0.8rem;
+  letter-spacing: 0.25em;
+  color: var(--color-sand);
+  text-transform: uppercase;
+}
+
+.scroll-prompt-icon {
+  width: 22px;
+  height: 32px;
+  border: 2px solid var(--color-gold-muted);
+  border-radius: 12px;
+  position: relative;
+}
+
+.scroll-prompt-icon::before {
+  content: '';
+  position: absolute;
+  top: 6px;
+  left: 50%;
+  width: 4px;
+  height: 6px;
+  background-color: var(--color-blood-red);
+  border-radius: 2px;
+  transform: translateX(-50%);
+  animation: scrollBob 1.8s infinite ease-in-out;
+}
+
+@keyframes scrollBob {
+  0%, 100% {
+    transform: translate(-50%, 0);
+    opacity: 1;
+  }
+  50% {
+    transform: translate(-50%, 10px);
+    opacity: 0.3;
+  }
+}
+
+/* ==========================================================================
+   RESPONSIVE HERO ADJUSTMENTS
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  .hero-section {
+    height: 240vh;
+  }
+
+  .letterbox-bar {
+    height: 6vh;
+  }
+
+  .hero-choreo-container {
+    width: 95%;
+  }
+
+  .hero-presents-badge {
+    padding: 0.35rem 1.2rem;
+    gap: 0.8rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .hero-tagline {
+    letter-spacing: 0.18em;
+  }
+
+  .hero-meta-bar {
+    margin-top: 1.2rem;
+    padding-top: 0.8rem;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    justify-content: center;
+  }
+
+  .hero-meta-item {
+    margin: 0 0.8rem;
+  }
+
+  .hero-meta-script {
+    display: none; /* Keep clean on small screens */
+  }
+
+  .hero-scroll-prompt {
+    bottom: 8vh;
+  }
+}
