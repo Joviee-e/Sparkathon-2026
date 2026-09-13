@@ -9,6 +9,7 @@ import { BountiesMap } from './sections/Bounties/BountiesMap.jsx';
 import { FieldTable } from './sections/FieldTable/FieldTable.jsx';
 import { Showdown } from './sections/Showdown/Showdown.jsx';
 import { ExpeditionTrail } from './sections/Timeline/ExpeditionTrail.jsx';
+import { ClaimTheBounty } from './sections/Rewards/ClaimTheBounty.jsx';
 
 export function App() {
   useEffect(() => {
@@ -54,6 +55,9 @@ export function App() {
 
         {/* Phase 6: The Expedition Trail — Event-Day Timeline */}
         <ExpeditionTrail />
+
+        {/* Phase 7: Claim the Bounty — Rewards & Strategic Perks */}
+        <ClaimTheBounty />
       </main>
     </>
   );
