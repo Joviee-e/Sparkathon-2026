@@ -1,0 +1,875 @@
+/* ==========================================================================
+   SECTION 06: THE EXPEDITION TRAIL — LIVING EVENT-DAY EXPEDITION ROUTE
+   Frontier Camera Journey • Natural Photographic Lighting • Pinned Field Placards
+   Strictly Physical & Cinematic: Stamped Ink, Weathered Timber, Zero Digital HUD
+   ========================================================================== */
+
+.expedition-trail-stage {
+  position: relative;
+  width: 100%;
+  height: 520vh; /* Pinned 5.2 viewport scroll budget for controlled continuous camera travel */
+  background-color: var(--color-espresso);
+  color: var(--color-parchment);
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+/* --------------------------------------------------------------------------
+   INGRESS CONTINUITY: FROM PHASE 5 SHOWDOWN
+   The blood-red route from Phase 5 continues unbroken
+   -------------------------------------------------------------------------- */
+.expedition-ingress-bridge {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 140px;
+  z-index: 15;
+  pointer-events: none;
+  background: linear-gradient(
+    to bottom,
+    rgba(20, 16, 14, 1) 0%,
+    rgba(20, 16, 14, 0.8) 50%,
+    rgba(20, 16, 14, 0) 100%
+  );
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 1.2rem;
+}
+
+.ingress-stem-trail {
+  width: 2px;
+  height: 54px;
+  background: linear-gradient(
+    to bottom,
+    var(--color-blood-red),
+    var(--color-crimson)
+  );
+}
+
+.ingress-editorial-cue {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+.ingress-cue-line {
+  width: 50px;
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(197, 160, 89, 0.45));
+}
+
+.ingress-cue-line.right {
+  background: linear-gradient(to left, transparent, rgba(197, 160, 89, 0.45));
+}
+
+.ingress-cue-text {
+  font-family: var(--font-condensed);
+  font-size: 0.72rem;
+  letter-spacing: 0.28em;
+  color: var(--color-gold-muted);
+  text-transform: uppercase;
+}
+
+/* --------------------------------------------------------------------------
+   PINNED 100VH CONTINUOUS EXPEDITION CANVAS
+   -------------------------------------------------------------------------- */
+.trail-pinned-viewport {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* --------------------------------------------------------------------------
+   CONTINUOUS PANORAMIC CAMERA ENVIRONMENT
+   The camera travels through one living frontier landscape
+   -------------------------------------------------------------------------- */
+.trail-landscape-environment {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.trail-camera-track {
+  position: absolute;
+  inset: -5%;
+  width: 110%;
+  height: 110%;
+  transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+}
+
+.landscape-vista-plane {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center 40%;
+  opacity: 0;
+  filter: contrast(1.06) brightness(0.72) sepia(0.1);
+  transition: opacity 1.1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.landscape-vista-plane.active {
+  opacity: 0.55;
+}
+
+/* Subtle Vignette & Shadow Depth (No neon colors) */
+.trail-camera-vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse at 50% 50%,
+    transparent 35%,
+    rgba(20, 16, 14, 0.75) 85%,
+    rgba(20, 16, 14, 0.96) 100%
+  );
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Restrained Natural Sunlight & Exposure Tint (Zero obvious purple/neon UI overlays) */
+.trail-lighting-exposure {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 3;
+  mix-blend-mode: soft-light;
+  opacity: 0.15;
+  transition: opacity 1.2s ease, background 1.2s ease;
+}
+
+/* --------------------------------------------------------------------------
+   PHYSICAL / EDITORIAL FRONTIER HEADER (NO DIGITAL HUD)
+   Printed, stamped letterpress typography integrated into the scene
+   -------------------------------------------------------------------------- */
+.trail-frontier-header {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 2.2rem 4.5rem 1rem 4.5rem;
+  width: 100%;
+  box-sizing: border-box;
+  pointer-events: none;
+}
+
+.trail-header-manifest {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.trail-stage-badge {
+  font-family: var(--font-condensed);
+  font-size: 0.78rem;
+  letter-spacing: 0.28em;
+  color: var(--color-gold-muted);
+  text-transform: uppercase;
+}
+
+.trail-section-title {
+  font-family: var(--font-display);
+  font-size: 2.2rem;
+  letter-spacing: 0.05em;
+  color: var(--color-parchment-warm);
+  margin: 0;
+  text-shadow: 0 4px 16px rgba(0, 0, 0, 0.9);
+}
+
+.trail-section-subtitle {
+  font-family: var(--font-condensed);
+  font-size: 0.88rem;
+  letter-spacing: 0.16em;
+  color: var(--color-sand);
+  margin: 0;
+  text-transform: uppercase;
+  opacity: 0.85;
+}
+
+/* Stamped Field Log Indicator (Physical ink seal, not a modern HUD) */
+.trail-field-log-stamp {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  border-right: 2px solid var(--color-blood-red);
+  padding-right: 1.2rem;
+}
+
+.log-stamp-title {
+  font-family: var(--font-condensed);
+  font-size: 0.68rem;
+  letter-spacing: 0.25em;
+  color: var(--color-sand);
+  text-transform: uppercase;
+}
+
+.log-stamp-counter {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  letter-spacing: 0.08em;
+  color: var(--color-gold-muted);
+  text-transform: uppercase;
+  margin-top: 0.15rem;
+}
+
+/* --------------------------------------------------------------------------
+   THE EXPEDITION ROUTE & PHYSICAL LANDMARK WAYPOINTS
+   No standalone web cards: The environment itself is the timeline
+   -------------------------------------------------------------------------- */
+.trail-expedition-clearing {
+  position: relative;
+  flex: 1;
+  width: 100%;
+  max-width: 1380px;
+  margin: 0 auto;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  padding: 0 2rem;
+}
+
+/* Continuous Inked SVG Route Line */
+.trail-route-svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.route-base-path {
+  fill: none;
+  stroke: rgba(139, 0, 0, 0.22);
+  stroke-width: 3.5px;
+  stroke-linecap: round;
+  stroke-dasharray: 8 6;
+}
+
+.route-drawn-path {
+  fill: none;
+  stroke: var(--color-crimson);
+  stroke-width: 3.5px;
+  stroke-linecap: round;
+  stroke-dasharray: 8 6;
+  filter: drop-shadow(0 0 4px rgba(158, 0, 0, 0.5));
+}
+
+.route-surveyor-marker {
+  fill: var(--color-parchment-warm);
+  stroke: var(--color-blood-red);
+  stroke-width: 2.5px;
+  filter: drop-shadow(0 0 6px rgba(197, 160, 89, 0.7));
+}
+
+/* Landmark Waypoint Stations Container */
+.trail-waypoints-stage {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Individual Physical Landmark Station */
+.expedition-waypoint-station {
+  position: absolute;
+  width: 100%;
+  max-width: 1140px;
+  display: grid;
+  grid-template-columns: 1.25fr 0.85fr;
+  gap: 3.5rem;
+  align-items: center;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.5s;
+  z-index: 4;
+}
+
+.expedition-waypoint-station.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  z-index: 6;
+}
+
+/* Left: Landscape Horizon Focus */
+.waypoint-landscape-window {
+  position: relative;
+  width: 100%;
+  height: 440px;
+  border: 1px solid rgba(197, 160, 89, 0.35);
+  background: var(--color-black);
+  box-shadow: 
+    0 16px 48px rgba(0, 0, 0, 0.8),
+    inset 0 0 24px rgba(0, 0, 0, 0.7);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.landscape-window-photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  filter: contrast(1.1) brightness(0.9) sepia(0.1);
+  transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.expedition-waypoint-station.active .landscape-window-photo {
+  transform: scale(1.03);
+}
+
+.landscape-window-frame {
+  position: absolute;
+  inset: 8px;
+  border: 1px solid rgba(216, 195, 165, 0.2);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.landscape-caption-plate {
+  position: relative;
+  z-index: 3;
+  padding: 1.2rem 1.6rem;
+  background: linear-gradient(
+    to top,
+    rgba(14, 10, 8, 0.95) 0%,
+    rgba(14, 10, 8, 0.7) 60%,
+    transparent 100%
+  );
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.caption-period {
+  font-family: var(--font-condensed);
+  font-size: 0.82rem;
+  letter-spacing: 0.24em;
+  color: var(--color-gold-muted);
+  text-transform: uppercase;
+}
+
+.caption-atmosphere {
+  font-family: var(--font-editorial);
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  color: var(--color-sand);
+  text-transform: uppercase;
+}
+
+/* Right: Physical Timber Trail Marker Post & Pinned Parchment Placard */
+.waypoint-physical-marker {
+  position: relative;
+  background: var(--color-parchment-warm);
+  border: 2px solid #8A6544;
+  box-shadow: 
+    0 20px 48px rgba(0, 0, 0, 0.85),
+    inset 0 0 32px rgba(184, 148, 108, 0.35);
+  padding: 2.2rem 2.2rem;
+  color: var(--color-ink);
+  box-sizing: border-box;
+}
+
+/* Authentic Iron Carriage Corner Bolts */
+.marker-iron-bolt {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #56504b, #181513);
+  border: 1px solid #14100E;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.65);
+}
+
+.marker-iron-bolt.top-left { top: 12px; left: 12px; }
+.marker-iron-bolt.top-right { top: 12px; right: 12px; }
+.marker-iron-bolt.bottom-left { bottom: 12px; left: 12px; }
+.marker-iron-bolt.bottom-right { bottom: 12px; right: 12px; }
+
+/* Inked Stamped Seal */
+.marker-red-seal {
+  position: absolute;
+  top: 1.4rem;
+  right: 1.8rem;
+  border: 2px solid var(--color-crimson);
+  color: var(--color-crimson);
+  font-family: var(--font-condensed);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  padding: 0.25rem 0.6rem;
+  text-transform: uppercase;
+  transform: rotate(2.5deg);
+  opacity: 0.9;
+}
+
+.marker-meta-header {
+  display: flex;
+  align-items: baseline;
+  gap: 0.85rem;
+  margin-bottom: 0.3rem;
+}
+
+.marker-ordinal-num {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  color: var(--color-blood-red);
+}
+
+.marker-field-tag {
+  font-family: var(--font-condensed);
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  color: #725235;
+  text-transform: uppercase;
+}
+
+.marker-codename {
+  font-family: var(--font-display);
+  font-size: 2.1rem;
+  letter-spacing: 0.04em;
+  color: var(--color-ink);
+  line-height: 1.1;
+  margin: 0 0 0.5rem 0;
+  text-transform: uppercase;
+}
+
+/* Event Name + Exact Time Band */
+.marker-time-band {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(139, 0, 0, 0.08);
+  border-top: 1px solid rgba(139, 0, 0, 0.3);
+  border-bottom: 1px solid rgba(139, 0, 0, 0.3);
+  padding: 0.5rem 0.8rem;
+  margin: 0.7rem 0 1.2rem 0;
+}
+
+.marker-event-name {
+  font-family: var(--font-condensed);
+  font-size: 1.12rem;
+  letter-spacing: 0.12em;
+  color: var(--color-blood-red);
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.marker-exact-time {
+  font-family: var(--font-editorial);
+  font-size: 1.08rem;
+  letter-spacing: 0.08em;
+  color: var(--color-ink);
+  font-weight: 700;
+}
+
+.marker-field-note {
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: #382A24;
+  margin: 0 0 1.2rem 0;
+}
+
+.marker-manifest-foot {
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px dashed rgba(140, 106, 72, 0.4);
+  padding-top: 0.75rem;
+  font-family: var(--font-condensed);
+  font-size: 0.68rem;
+  letter-spacing: 0.2em;
+  color: #725235;
+  text-transform: uppercase;
+}
+
+/* --------------------------------------------------------------------------
+   THE 1:00 PM – 3:30 PM TIME GAP INTERLUDE
+   Genuine open stretch of expedition trail • Sparse composition • Breathing room
+   Zero invented activities or sessions
+   -------------------------------------------------------------------------- */
+.trail-open-stretch {
+  position: absolute;
+  width: 100%;
+  max-width: 860px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(0.96);
+  transition: opacity 0.5s ease, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.5s;
+  z-index: 4;
+}
+
+.trail-open-stretch.active {
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1);
+  z-index: 6;
+}
+
+.open-stretch-marker {
+  position: relative;
+  background: rgba(20, 16, 14, 0.88);
+  border: 2px solid var(--color-gold-muted);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.92);
+  padding: 3rem 4rem;
+  max-width: 760px;
+}
+
+.stretch-time-cue {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  letter-spacing: 0.22em;
+  color: var(--color-gold-muted);
+  border: 1px solid rgba(197, 160, 89, 0.4);
+  padding: 0.35rem 1.3rem;
+  margin-bottom: 1.2rem;
+}
+
+.stretch-headline {
+  font-family: var(--font-display);
+  font-size: 2.6rem;
+  letter-spacing: 0.05em;
+  color: var(--color-parchment-warm);
+  margin: 0 0 0.5rem 0;
+  text-transform: uppercase;
+}
+
+.stretch-subtext {
+  font-family: var(--font-condensed);
+  font-size: 1.15rem;
+  letter-spacing: 0.18em;
+  color: var(--color-sand);
+  margin: 0 0 1.5rem 0;
+  text-transform: uppercase;
+}
+
+.stretch-ink-rule {
+  width: 140px;
+  height: 2px;
+  background: linear-gradient(to right, transparent, var(--color-blood-red), transparent);
+  margin: 0 auto 1.5rem auto;
+}
+
+.stretch-narrative {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--color-parchment);
+  margin: 0;
+}
+
+/* --------------------------------------------------------------------------
+   EGRESS HANDOFF: TOWARD PHASE 7 CLAIM THE BOUNTY
+   The sunset trail reaches the destination
+   -------------------------------------------------------------------------- */
+.expedition-egress-bridge {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 130px;
+  z-index: 15;
+  pointer-events: none;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(20, 16, 14, 0.85) 60%,
+    rgba(20, 16, 14, 1) 100%
+  );
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  padding-bottom: 1.8rem;
+}
+
+.egress-trail-line {
+  width: 2px;
+  height: 44px;
+  background: linear-gradient(
+    to bottom,
+    var(--color-crimson),
+    rgba(139, 0, 0, 0.2)
+  );
+  margin-bottom: 0.65rem;
+}
+
+.egress-cue-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+.egress-cue-rule {
+  width: 75px;
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(197, 160, 89, 0.45));
+}
+
+.egress-cue-rule.right {
+  background: linear-gradient(to left, transparent, rgba(197, 160, 89, 0.45));
+}
+
+.egress-cue-text {
+  font-family: var(--font-condensed);
+  font-size: 0.82rem;
+  letter-spacing: 0.26em;
+  color: var(--color-gold-muted);
+  text-transform: uppercase;
+  text-align: center;
+}
+
+/* ==========================================================================
+   TABLET RESPONSIVE ADAPTATIONS (max-width: 1024px)
+   ========================================================================== */
+@media (max-width: 1024px) {
+  .trail-frontier-header {
+    padding: 1.8rem 2rem 1rem 2rem;
+  }
+
+  .trail-section-title {
+    font-size: 1.95rem;
+  }
+
+  .trail-expedition-clearing {
+    padding: 0 1.5rem;
+  }
+
+  .expedition-waypoint-station {
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+
+  .waypoint-landscape-window {
+    height: 380px;
+  }
+
+  .marker-codename {
+    font-size: 1.8rem;
+  }
+
+  .marker-event-name {
+    font-size: 1rem;
+  }
+
+  .marker-exact-time {
+    font-size: 0.95rem;
+  }
+
+  .marker-field-note {
+    font-size: 0.88rem;
+  }
+}
+
+/* ==========================================================================
+   MOBILE RESPONSIVE ARCHITECTURE (max-width: 768px)
+   Continuous vertical expedition trail • Landmark stations along route
+   No horizontal overflow • Fluid responsive travel
+   ========================================================================== */
+@media (max-width: 768px) {
+  .expedition-trail-stage {
+    height: auto !important; /* Unpin for natural vertical scroll */
+    overflow: visible;
+  }
+
+  .trail-pinned-viewport {
+    position: relative;
+    height: auto;
+    overflow: visible;
+    padding-bottom: 3.5rem;
+  }
+
+  .trail-frontier-header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 2rem 1.25rem 1.5rem 1.25rem;
+    gap: 1rem;
+  }
+
+  .trail-section-title {
+    font-size: 1.75rem;
+  }
+
+  .trail-section-subtitle {
+    font-size: 0.78rem;
+  }
+
+  .trail-field-log-stamp {
+    border-right: none;
+    border-left: 2px solid var(--color-blood-red);
+    padding-right: 0;
+    padding-left: 0.8rem;
+    align-items: flex-start;
+  }
+
+  .trail-expedition-clearing {
+    height: auto;
+    display: block;
+    padding: 0 1.25rem;
+  }
+
+  .trail-route-svg {
+    display: none; /* Replaced by physical vertical trail line on mobile */
+  }
+
+  .trail-waypoints-stage {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 3.5rem;
+    height: auto;
+    border-left: 2px dashed rgba(139, 0, 0, 0.45);
+    margin-left: 0.4rem;
+    padding-left: 1rem;
+  }
+
+  .expedition-waypoint-station {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+    gap: 1.2rem;
+  }
+
+  .waypoint-landscape-window {
+    height: 220px;
+  }
+
+  .waypoint-physical-marker {
+    padding: 1.5rem 1.3rem;
+  }
+
+  .marker-red-seal {
+    top: 1rem;
+    right: 1rem;
+    font-size: 0.65rem;
+    padding: 0.2rem 0.4rem;
+  }
+
+  .marker-codename {
+    font-size: 1.55rem;
+  }
+
+  .marker-time-band {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.35rem;
+  }
+
+  /* The 1:00 PM – 3:30 PM Interlude on Mobile */
+  .trail-open-stretch {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+    margin: 1.5rem 0;
+  }
+
+  .open-stretch-marker {
+    padding: 2rem 1.4rem;
+  }
+
+  .stretch-headline {
+    font-size: 1.8rem;
+  }
+
+  .expedition-egress-bridge {
+    position: relative;
+    height: auto;
+    padding-top: 2.5rem;
+  }
+
+  .egress-cue-text {
+    font-size: 0.75rem;
+    padding: 0 1rem;
+  }
+}
+
+/* ==========================================================================
+   ACCESSIBILITY: PREFERS-REDUCED-MOTION
+   Static unpinned display with all milestones, text, and trail visible
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  .expedition-trail-stage {
+    height: auto !important;
+  }
+
+  .trail-pinned-viewport {
+    height: auto !important;
+  }
+
+  .trail-expedition-clearing {
+    height: auto !important;
+    display: block !important;
+  }
+
+  .trail-waypoints-stage {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 3rem !important;
+    height: auto !important;
+  }
+
+  .expedition-waypoint-station {
+    position: relative !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    height: auto !important;
+    margin-bottom: 2rem !important;
+  }
+
+  .trail-open-stretch {
+    position: relative !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+    height: auto !important;
+    margin: 3rem 0 !important;
+  }
+
+  .landscape-vista-plane {
+    transition: none !important;
+  }
+
+  .route-drawn-path {
+    stroke-dashoffset: 0 !important;
+  }
+}

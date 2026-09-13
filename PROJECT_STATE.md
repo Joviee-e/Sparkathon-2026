@@ -1,9 +1,9 @@
 # SPARKATHON 2026 — PROJECT STATE & GOVERNANCE
 
-**Current Status:** Phase 5 (Section 05: The Showdown — High Noon / Judging Criteria) Completed & Verified  
-**Active Phase:** Awaiting User Review & Sign-Off on Phase 5  
-**Next Phase:** Phase 6 — Section 06: The Expedition Trail (Living Timeline)  
-**Code Modified / Created:** `src/data/showdownData.js`, `src/styles/showdown.css`, `src/modules/showdown-choreography.js`, `src/sections/Showdown/Showdown.jsx`, `src/App.jsx`, `src/main.jsx`, `test-section5.js`  
+**Current Status:** Phase 6 (Section 06: The Expedition Trail — Living Event-Day Timeline) Completed & Verified  
+**Active Phase:** Awaiting User Review & Sign-Off on Phase 6  
+**Next Phase:** Phase 7 — Section 07: Claim the Bounty (Prizes & Perks) & Registration Office  
+**Code Modified / Created:** `src/data/timelineData.js`, `src/styles/expedition-trail.css`, `src/modules/expedition-trail-choreography.js`, `src/sections/Timeline/ExpeditionTrail.jsx`, `src/App.jsx`, `src/main.jsx`, `test-section6.js`  
 
 ---
 
@@ -172,6 +172,7 @@ Section 04 is NOT four cards, NOT a SaaS grid, and NOT four floating panels. It 
 - [x] Phase 4: Section 04 — How It Works (The Bounty Hunter's Field Table) implemented & verified.
 - [x] React Architecture Migration: Migrated Vanilla JS/HTML Vite app to modular React architecture (`@vitejs/plugin-react`, `React 19`, `gsap.context()`, modular sections, 0 console errors).
 - [x] Phase 5: Section 05 — The Showdown (High Noon / Judging Criteria) implemented & verified.
-- [ ] Phase 5: User Review & Sign-Off (Current Step).
-- [ ] Phase 6: Section 06 — The Expedition Trail (Living Timeline).
+- [x] Phase 5: User Review & Sign-Off completed (commit `3d31801`).
+- [x] Phase 6: Section 06 — The Expedition Trail (Living Event-Day Timeline) implemented & verified.
+- [ ] Phase 6: User Review & Sign-Off (Current Step).
 - [ ] Phase 7: Section 07 — Claim Your Bounty & Section 08 — Registration Office.

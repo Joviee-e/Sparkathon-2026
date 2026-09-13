@@ -9,6 +9,8 @@ dist-ssr/
 # Temporary and Scratch Directories
 scratch/
 .tempmediaStorage/
+phase5_screenshots/
+phase6_screenshots/
 
 # Reference Documents & PDFs (Local design/source materials)
 *.pdf

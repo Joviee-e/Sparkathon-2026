@@ -8,6 +8,7 @@ import { WhatIsSparkathon } from './sections/About/WhatIsSparkathon.jsx';
 import { BountiesMap } from './sections/Bounties/BountiesMap.jsx';
 import { FieldTable } from './sections/FieldTable/FieldTable.jsx';
 import { Showdown } from './sections/Showdown/Showdown.jsx';
+import { ExpeditionTrail } from './sections/Timeline/ExpeditionTrail.jsx';
 
 export function App() {
   useEffect(() => {
@@ -50,6 +51,9 @@ export function App() {
 
         {/* Phase 5: The Showdown — High Noon Judging Criteria */}
         <Showdown />
+
+        {/* Phase 6: The Expedition Trail — Event-Day Timeline */}
+        <ExpeditionTrail />
       </main>
     </>
   );

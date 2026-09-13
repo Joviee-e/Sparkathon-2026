@@ -10,6 +10,7 @@ import './styles/section2-handoff.css';
 import './styles/bounties-map.css';
 import './styles/section4-field-table.css';
 import './styles/showdown.css';
+import './styles/expedition-trail.css';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
