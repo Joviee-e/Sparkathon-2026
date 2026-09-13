@@ -16,6 +16,7 @@
   <link rel="stylesheet" href="/src/styles/hero.css">
   <link rel="stylesheet" href="/src/styles/section2-handoff.css">
   <link rel="stylesheet" href="/src/styles/bounties-map.css">
+  <link rel="stylesheet" href="/src/styles/section4-field-table.css">
 </head>
 <body>
 
@@ -517,6 +518,233 @@
         </div>
 
       </div>
+    </section>
+
+    <!-- ====================================================================
+         04 — HOW IT WORKS: THE BOUNTY HUNTER'S FIELD TABLE
+         ==================================================================== -->
+    <section class="field-table-section" id="section-how-it-works" aria-label="How It Works — The Bounty Hunter's Field Table">
+      
+      <!-- Seamless Narrative Transition Bridge from Section 03 Map -->
+      <div class="field-table-transition-bridge" aria-hidden="true">
+        <div class="field-table-dust-blend"></div>
+        <div class="timber-divider-line">
+          <span class="timber-rule"></span>
+          <span class="timber-brand-stamp">WORKBENCH SPECIFICATION • STAGE 04</span>
+          <span class="timber-rule"></span>
+        </div>
+      </div>
+
+      <!-- Pinned 100vh Stage -->
+      <div class="field-table-pinned-stage">
+
+        <!-- Fixed Editorial HUD Overlay -->
+        <header class="field-table-hud" aria-label="Field Table Navigation & Progress">
+          <div class="hud-left">
+            <div class="hud-marker">
+              <span class="marker-num">04</span>
+              <span class="marker-sep">/</span>
+              <span class="marker-label">HOW IT WORKS</span>
+            </div>
+            <h2 class="hud-headline">THE BOUNTY HUNTER’S FIELD TABLE</h2>
+            <p class="hud-subline">AN IDEA EVOLVES ACROSS THE FRONTIER WORKBENCH</p>
+          </div>
+
+          <!-- Process Stage Meter / Dial -->
+          <nav class="hud-process-dial" aria-label="Workflow Stages">
+            <div class="dial-step active" data-step="0">
+              <span class="dial-index">01</span>
+              <span class="dial-name">PRESENT</span>
+            </div>
+            <span class="dial-arrow">→</span>
+            <div class="dial-step" data-step="1">
+              <span class="dial-index">02</span>
+              <span class="dial-name">PROTOTYPE</span>
+            </div>
+            <span class="dial-arrow">→</span>
+            <div class="dial-step" data-step="2">
+              <span class="dial-index">03</span>
+              <span class="dial-name">SOLUTION</span>
+            </div>
+            <span class="dial-arrow">→</span>
+            <div class="dial-step" data-step="3">
+              <span class="dial-index">04</span>
+              <span class="dial-name">PITCH</span>
+            </div>
+          </nav>
+        </header>
+
+        <!-- The Camera Viewport Window -->
+        <div class="field-table-viewport">
+
+          <!-- Deep Rustic Workbench Surface Container (Panned/Zoomed by Camera) -->
+          <div class="field-table-surface" id="field-table-surface">
+
+            <!-- Environmental Cinematic Video Anchor -->
+            <div class="table-cinematic-window" aria-label="Cinematic Field Workshop Environment">
+              <div class="video-timber-frame">
+                <div class="frame-corner corner-tl"></div>
+                <div class="frame-corner corner-tr"></div>
+                <div class="frame-corner corner-bl"></div>
+                <div class="frame-corner corner-br"></div>
+                <video 
+                  class="field-table-video" 
+                  id="field-table-video"
+                  src="/assets/video/how-it-works.mp4" 
+                  poster="/assets/images/how-it-works-poster.png"
+                  autoplay 
+                  loop 
+                  muted 
+                  playsinline 
+                  aria-label="Artisan crafting prototype on map workbench">
+                </video>
+                <div class="video-lantern-grade" aria-hidden="true"></div>
+                <div class="video-caption-strip">
+                  <span class="caption-stamp">MONUMENT EXPEDITION OUTPOST // CRAFTING BENCH</span>
+                  <span class="caption-status"><span class="status-dot"></span> LIVE BENCH CAM</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Authentic Physical Worktable Accents: Tools, Pencils, Maps -->
+            <div class="table-ambient-props" aria-hidden="true">
+              <div class="prop-map-sheet"></div>
+              <div class="prop-brass-calipers"></div>
+              <div class="prop-carpenter-pencil"></div>
+            </div>
+
+            <!-- Connected Workflow Pipeline: 4 Tangible Field Stations -->
+            <div class="table-stations-stream">
+
+              <!-- STATION 1: PRESENT -->
+              <article class="table-station station-present active" id="station-present">
+                <div class="station-card-inner folio-paper">
+                  <div class="paper-clip-brass" aria-hidden="true"></div>
+                  <div class="station-meta-bar">
+                    <span class="station-tag">PHASE 01 // FORMAT BRIEF</span>
+                    <span class="station-seal-mini">OFFICIAL MANIFEST</span>
+                  </div>
+                  <h3 class="station-title">PRESENT</h3>
+                  <div class="station-content">
+                    <p class="station-statement">Projects are formally presented to the frontier jury using:</p>
+                    <div class="presentation-tools-block">
+                      <div class="tool-pill pill-powerpoint">
+                        <span class="tool-icon">▤</span>
+                        <span class="tool-name">PowerPoint</span>
+                      </div>
+                      <span class="tool-conjunction">OR</span>
+                      <div class="tool-pill pill-canva">
+                        <span class="tool-icon">◈</span>
+                        <span class="tool-name">Canva</span>
+                      </div>
+                    </div>
+                    <p class="station-note">Structured slides, crisp visual architecture, and clean typographic evidence.</p>
+                  </div>
+                  <div class="paper-corner-fold" aria-hidden="true"></div>
+                </div>
+              </article>
+
+              <!-- STATION 2: PROTOTYPE -->
+              <article class="table-station station-prototype" id="station-prototype">
+                <div class="station-card-inner blueprint-paper">
+                  <div class="station-meta-bar">
+                    <span class="station-tag">PHASE 02 // TANGIBLE PROOF</span>
+                    <span class="station-stamp-red">STRONGLY ENCOURAGED</span>
+                  </div>
+                  <h3 class="station-title">PROTOTYPE</h3>
+                  <div class="station-content">
+                    <div class="prototype-mandate-box">
+                      <div class="mandate-headline">PROTOTYPES / POCS ARE ENCOURAGED</div>
+                      <p class="mandate-body">
+                        Bring your concept to life. Whether a functional software deploy, hardware assembly, or physical mechanism — proof of concept validates the frontier claim.
+                      </p>
+                    </div>
+                    <div class="prototype-schematic-accent" aria-hidden="true">
+                      <span class="schematic-mark">⚙</span>
+                      <span class="schematic-text">PHYSICAL / DIGITAL ARTIFACT</span>
+                      <span class="schematic-mark">⚡</span>
+                    </div>
+                  </div>
+                </div>
+              </article>
+
+              <!-- STATION 3: SOLUTION -->
+              <article class="table-station station-solution" id="station-solution">
+                <div class="station-card-inner ledger-paper">
+                  <div class="station-meta-bar">
+                    <span class="station-tag">PHASE 03 // TECHNICAL DOSSIER</span>
+                    <span class="station-seal-mini">FOUR PILLARS</span>
+                  </div>
+                  <h3 class="station-title">SOLUTION</h3>
+                  <div class="station-content">
+                    <p class="solution-intro">Participants must thoroughly cover four core criteria:</p>
+                    <div class="solution-quadrant-grid">
+                      <div class="quadrant-item">
+                        <div class="quadrant-header">
+                          <span class="quadrant-num">I</span>
+                          <span class="quadrant-title">PROBLEM</span>
+                        </div>
+                        <p class="quadrant-desc">The critical frontier challenge, friction point, or unaddressed market gap.</p>
+                      </div>
+                      <div class="quadrant-item">
+                        <div class="quadrant-header">
+                          <span class="quadrant-num">II</span>
+                          <span class="quadrant-title">SOLUTION</span>
+                        </div>
+                        <p class="quadrant-desc">The breakthrough innovation, value proposition, and functional mechanism.</p>
+                      </div>
+                      <div class="quadrant-item">
+                        <div class="quadrant-header">
+                          <span class="quadrant-num">III</span>
+                          <span class="quadrant-title">TECHNICAL DETAILS</span>
+                        </div>
+                        <p class="quadrant-desc">System architecture, algorithms, embedded hardware, schemas, and implementation.</p>
+                      </div>
+                      <div class="quadrant-item">
+                        <div class="quadrant-header">
+                          <span class="quadrant-num">IV</span>
+                          <span class="quadrant-title">MARKET IMPACT</span>
+                        </div>
+                        <p class="quadrant-desc">Commercial viability, user scalability, adoption economics, and expansion potential.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </article>
+
+              <!-- STATION 4: PITCH -->
+              <article class="table-station station-pitch" id="station-pitch">
+                <div class="station-card-inner verdict-paper">
+                  <div class="station-meta-bar">
+                    <span class="station-tag">PHASE 04 // FINAL DEFENSE</span>
+                    <span class="station-stamp-gold">OFFLINE JURY PITCH</span>
+                  </div>
+                  <h3 class="station-title">PITCH</h3>
+                  <div class="station-content">
+                    <div class="pitch-duration-lockup">
+                      <div class="pitch-duration-value">5–10 MINUTES</div>
+                      <div class="pitch-duration-label">+ JURY Q&amp;A DEFENSE</div>
+                    </div>
+                    <p class="pitch-instructions">
+                      Step before the industry panel. Deliver the presentation, demonstrate the prototype, and defend your technical architecture under cross-examination.
+                    </p>
+                    <div class="showdown-readiness-seal">
+                      <span class="seal-icon">★</span>
+                      <span class="seal-text">THE WORK IS READY. PROCEED TO SHOWDOWN.</span>
+                      <span class="seal-icon">★</span>
+                    </div>
+                  </div>
+                </div>
+              </article>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
     </section>
 
   </main>

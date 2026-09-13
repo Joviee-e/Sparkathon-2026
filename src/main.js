@@ -1,6 +1,7 @@
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { DustCanvas } from './modules/dust-canvas.js';
+import { setupFieldTableChoreography } from './modules/field-table-choreography.js';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -37,7 +38,10 @@ class SparkathonExperience {
     // 5. Setup Section 03 Large Cinematic Frontier Map Choreography
     this.setupBountiesMapChoreography();
 
-    // 6. Handle Window Resize & Refresh
+    // 6. Setup Section 04 The Bounty Hunter's Field Table Choreography
+    setupFieldTableChoreography();
+
+    // 7. Handle Window Resize & Refresh
     this.setupResizeListener();
   }
 
