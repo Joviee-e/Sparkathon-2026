@@ -7,6 +7,7 @@ import { Hero } from './sections/Hero/Hero.jsx';
 import { WhatIsSparkathon } from './sections/About/WhatIsSparkathon.jsx';
 import { BountiesMap } from './sections/Bounties/BountiesMap.jsx';
 import { FieldTable } from './sections/FieldTable/FieldTable.jsx';
+import { Showdown } from './sections/Showdown/Showdown.jsx';
 
 export function App() {
   useEffect(() => {
@@ -46,6 +47,9 @@ export function App() {
 
         {/* Phase 4: How It Works — The Bounty Hunter's Field Table */}
         <FieldTable />
+
+        {/* Phase 5: The Showdown — High Noon Judging Criteria */}
+        <Showdown />
       </main>
     </>
   );

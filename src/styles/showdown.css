@@ -1,0 +1,702 @@
+/* ==========================================================================
+   SECTION 05: THE SHOWDOWN — HIGH NOON / JUDGING CRITERIA
+   Authentic Western Frontier Clearing • Natural Sunlight Exposure • Physical Stamped Paper
+   ========================================================================== */
+
+.showdown-section {
+  position: relative;
+  width: 100%;
+  height: 450vh; /* Pinned 4.5 viewport scroll distance on desktop */
+  background-color: var(--color-espresso);
+  overflow: hidden;
+}
+
+/* --------------------------------------------------------------------------
+   TRANSITION INGRESS: FROM SECTION 04 FIELD TABLE
+   -------------------------------------------------------------------------- */
+.showdown-transition-bridge {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 140px;
+  z-index: 10;
+  pointer-events: none;
+  background: linear-gradient(
+    to bottom,
+    rgba(19, 14, 12, 1) 0%,
+    rgba(19, 14, 12, 0.75) 45%,
+    rgba(20, 16, 14, 0) 100%
+  );
+}
+
+.showdown-dust-veil {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(ellipse at 50% 0%, rgba(216, 195, 165, 0.12) 0%, transparent 70%);
+}
+
+.showdown-boundary-rule {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  width: 90%;
+  max-width: 1200px;
+}
+
+.showdown-boundary-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(197, 160, 89, 0.45), transparent);
+}
+
+.showdown-boundary-stamp {
+  font-family: var(--font-condensed);
+  font-size: 0.75rem;
+  letter-spacing: 0.3em;
+  color: var(--color-gold-muted);
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+/* --------------------------------------------------------------------------
+   PINNED 100VH STAGE
+   -------------------------------------------------------------------------- */
+.showdown-pinned-stage {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+/* Natural High Noon Sunlight & Overexposure Wash (Photographic, Not Emissive) */
+.showdown-sun-exposure {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: 
+    radial-gradient(ellipse at 50% 10%, rgba(255, 248, 230, 0.14) 0%, transparent 65%),
+    linear-gradient(180deg, rgba(247, 242, 231, 0.05) 0%, transparent 40%, rgba(15, 12, 10, 0.7) 100%);
+  z-index: 2;
+  mix-blend-mode: screen;
+}
+
+/* Distressed Frontier Landscape Backdrop */
+.showdown-backdrop-wrap {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.showdown-backdrop-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 30%;
+  filter: sepia(0.35) contrast(1.15) brightness(0.32);
+  transform: scale(1.04);
+}
+
+.showdown-backdrop-vignette {
+  position: absolute;
+  inset: 0;
+  background: 
+    radial-gradient(ellipse at center, transparent 40%, rgba(12, 9, 8, 0.88) 100%),
+    linear-gradient(to bottom, rgba(14, 11, 9, 0.8) 0%, transparent 20%, transparent 80%, rgba(14, 11, 9, 0.95) 100%);
+}
+
+/* --------------------------------------------------------------------------
+   EDITORIAL HEADS-UP OVERLAY (HUD)
+   -------------------------------------------------------------------------- */
+.showdown-hud {
+  position: relative;
+  z-index: 10;
+  width: 92%;
+  max-width: 1400px;
+  padding: 2.2rem 0 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  border-bottom: 1px solid rgba(197, 160, 89, 0.25);
+}
+
+.showdown-hud-left {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.showdown-marker {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-condensed);
+  font-size: 0.75rem;
+  letter-spacing: 0.25em;
+  color: var(--color-gold-muted);
+  text-transform: uppercase;
+}
+
+.showdown-marker .marker-num {
+  color: var(--color-blood-red);
+  font-weight: 700;
+}
+
+.showdown-hud-title {
+  font-family: var(--font-western-clean);
+  font-size: clamp(1.4rem, 2.8vw, 2.2rem);
+  letter-spacing: 0.06em;
+  color: var(--color-parchment-light);
+  margin: 0;
+  line-height: 1.15;
+  text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.85);
+}
+
+.showdown-hud-subline {
+  font-family: var(--font-condensed);
+  font-size: 0.8rem;
+  letter-spacing: 0.2em;
+  color: var(--color-sand);
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.showdown-hud-clock {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.2rem;
+}
+
+.showdown-time-badge {
+  font-family: var(--font-condensed);
+  font-size: 0.72rem;
+  letter-spacing: 0.25em;
+  color: var(--color-gold-muted);
+  text-transform: uppercase;
+}
+
+.showdown-time-val {
+  font-family: var(--font-western);
+  font-size: 1.1rem;
+  letter-spacing: 0.08em;
+  color: var(--color-blood-red);
+  text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.9);
+}
+
+/* --------------------------------------------------------------------------
+   THE HIGH NOON SHOWDOWN ARENA
+   -------------------------------------------------------------------------- */
+.showdown-arena {
+  position: relative;
+  z-index: 5;
+  width: 100%;
+  max-width: 1400px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  perspective: 1000px;
+}
+
+/* --------------------------------------------------------------------------
+   APPROVED PRODUCTION BANNER: "JUDGING CRITERIA"
+   -------------------------------------------------------------------------- */
+.showdown-banner-mount {
+  position: absolute;
+  top: 6%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 90%;
+  max-width: 620px;
+  z-index: 6;
+  opacity: 0; /* Animated by GSAP */
+  transform-origin: center top;
+}
+
+.banner-timber-lintel {
+  position: relative;
+  width: 100%;
+  padding: 0.4rem 1.2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: 
+    linear-gradient(180deg, #2b1f1a 0%, #1c1411 100%);
+  border-top: 2px solid #4a382e;
+  border-bottom: 2px solid #0d0908;
+  box-shadow: 
+    0 10px 25px rgba(0, 0, 0, 0.8),
+    inset 0 1px 1px rgba(255, 255, 255, 0.1);
+}
+
+.lintel-bolt {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #888 0%, #333 70%, #111 100%);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.9);
+}
+
+.bolt-left { left: 14px; }
+.bolt-right { right: 14px; }
+
+.judging-banner-img {
+  width: 100%;
+  max-width: 540px;
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.85));
+}
+
+/* --------------------------------------------------------------------------
+   FIVE SEQUENTIAL VERDICTS (PHYSICAL STAMPED PLACARDS)
+   -------------------------------------------------------------------------- */
+.showdown-verdict-sequence {
+  position: relative;
+  width: 92%;
+  max-width: 1100px;
+  height: 380px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 4rem;
+}
+
+.verdict-placard {
+  position: absolute;
+  width: 100%;
+  max-width: 780px;
+  background-color: var(--color-parchment-light);
+  background-image: 
+    radial-gradient(circle at 50% 50%, rgba(247, 242, 231, 0.98) 0%, rgba(230, 218, 195, 0.94) 100%);
+  border: 4px solid var(--color-espresso);
+  box-shadow: 
+    0 0 0 1px var(--color-gold-muted),
+    0 25px 60px rgba(0, 0, 0, 0.9),
+    inset 0 0 35px rgba(184, 93, 59, 0.15);
+  padding: 2.4rem 3rem 2rem;
+  opacity: 0; /* Sequenced via GSAP */
+  transform: translateY(30px) scale(0.96);
+  pointer-events: none;
+}
+
+.verdict-placard.active {
+  pointer-events: auto;
+}
+
+/* Real Inked Verdict Stamp in Top Right */
+.placard-stamp-seal {
+  position: absolute;
+  top: 1.2rem;
+  right: 1.5rem;
+  border: 2px dashed var(--color-blood-red);
+  padding: 0.25rem 0.75rem;
+  font-family: var(--font-condensed);
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  color: var(--color-blood-red);
+  text-transform: uppercase;
+  transform: rotate(2deg);
+  opacity: 0.88;
+}
+
+.placard-header {
+  display: flex;
+  align-items: baseline;
+  gap: 1.2rem;
+  border-bottom: 2px solid var(--color-blood-red);
+  padding-bottom: 0.6rem;
+  margin-bottom: 1.2rem;
+}
+
+.placard-num {
+  font-family: var(--font-western);
+  font-size: 2.2rem;
+  color: var(--color-blood-red);
+  line-height: 1;
+  text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.15);
+}
+
+.placard-code {
+  font-family: var(--font-condensed);
+  font-size: 0.82rem;
+  letter-spacing: 0.25em;
+  color: var(--color-clay);
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.placard-title {
+  font-family: var(--font-western-clean);
+  font-size: clamp(1.6rem, 3.2vw, 2.5rem);
+  letter-spacing: 0.04em;
+  color: var(--color-espresso);
+  margin: 0 0 0.8rem 0;
+  line-height: 1.12;
+  text-transform: uppercase;
+}
+
+.placard-desc {
+  font-family: var(--font-serif);
+  font-size: clamp(0.98rem, 1.4vw, 1.15rem);
+  color: #2b221d;
+  line-height: 1.55;
+  margin: 0 0 1.2rem 0;
+  font-style: italic;
+}
+
+.placard-footer-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px dotted rgba(20, 16, 14, 0.35);
+  padding-top: 0.6rem;
+}
+
+.placard-rule-tag {
+  font-family: var(--font-condensed);
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  color: var(--color-clay);
+  text-transform: uppercase;
+}
+
+.placard-watermark {
+  font-family: var(--font-western);
+  font-size: 0.72rem;
+  letter-spacing: 0.15em;
+  color: rgba(20, 16, 14, 0.25);
+  text-transform: uppercase;
+}
+
+/* --------------------------------------------------------------------------
+   STAGE 8 — HIGH NOON CLIMAX CHAMBER: "ONE WINNER PER DOMAIN"
+   -------------------------------------------------------------------------- */
+.showdown-climax-chamber {
+  position: absolute;
+  width: 92%;
+  max-width: 920px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  opacity: 0; /* GSAP Climax Reveal */
+  transform: scale(0.94);
+  z-index: 8;
+  pointer-events: none;
+}
+
+.showdown-climax-chamber.active {
+  pointer-events: auto;
+}
+
+/* Stamped Physical Wax Seal (Non-Glowing, Real Red Ink Stamp) */
+.climax-letterpress-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 0.45rem 1.6rem;
+  background-color: var(--color-blood-red);
+  color: var(--color-parchment-light);
+  font-family: var(--font-condensed);
+  font-size: 0.85rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  border: 1px solid var(--color-gold-muted);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.6);
+  margin-bottom: 1.2rem;
+}
+
+.climax-star {
+  color: var(--color-gold-muted);
+}
+
+.climax-main-title {
+  font-family: var(--font-western);
+  font-size: clamp(2.2rem, 5.2vw, 4.4rem);
+  letter-spacing: 0.04em;
+  color: var(--color-parchment-light);
+  line-height: 1.05;
+  margin: 0 0 1rem 0;
+  text-transform: uppercase;
+  text-shadow: 
+    3px 3px 0 var(--color-blood-red),
+    6px 6px 0 rgba(0, 0, 0, 0.9);
+}
+
+.climax-decree-text {
+  font-family: var(--font-serif);
+  font-size: clamp(1rem, 1.6vw, 1.25rem);
+  color: var(--color-sand);
+  max-width: 680px;
+  line-height: 1.6;
+  margin: 0 0 2rem 0;
+  font-style: italic;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.9);
+}
+
+/* The Consequences of Victory: RECOGNITION • MENTORSHIP • INCUBATION */
+.climax-rewards-triumvirate {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  width: 100%;
+}
+
+.reward-token {
+  position: relative;
+  background: 
+    linear-gradient(180deg, rgba(35, 26, 22, 0.95) 0%, rgba(20, 16, 14, 0.98) 100%);
+  border: 2px solid var(--color-gold-muted);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.85);
+  padding: 1.6rem 1.2rem 1.4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transform: translateY(20px);
+  opacity: 0; /* Sequenced via GSAP */
+}
+
+.reward-token-header {
+  font-family: var(--font-western);
+  font-size: 1.25rem;
+  letter-spacing: 0.08em;
+  color: var(--color-gold-muted);
+  margin-bottom: 0.6rem;
+  text-transform: uppercase;
+  border-bottom: 1px solid rgba(197, 160, 89, 0.35);
+  padding-bottom: 0.4rem;
+  width: 100%;
+}
+
+.reward-token-desc {
+  font-family: var(--font-condensed);
+  font-size: 0.82rem;
+  letter-spacing: 0.08em;
+  color: var(--color-parchment-light);
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* --------------------------------------------------------------------------
+   TRANSITION EGRESS TOWARD PHASE 6 (TIMELINE EXPEDITION TRAIL)
+   -------------------------------------------------------------------------- */
+.showdown-trail-bridge {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 120px;
+  pointer-events: none;
+  z-index: 10;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(14, 11, 9, 0.85) 60%,
+    rgba(14, 11, 9, 1) 100%
+  );
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.trail-cue-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  opacity: 0.75;
+}
+
+.trail-cue-line {
+  width: 60px;
+  height: 2px;
+  background: var(--color-blood-red);
+}
+
+.trail-cue-text {
+  font-family: var(--font-condensed);
+  font-size: 0.75rem;
+  letter-spacing: 0.28em;
+  color: var(--color-gold-muted);
+  text-transform: uppercase;
+}
+
+/* --------------------------------------------------------------------------
+   RESPONSIVE LAYOUTS
+   -------------------------------------------------------------------------- */
+
+/* TABLET (769px - 1024px) */
+@media (max-width: 1024px) {
+  .showdown-section {
+    height: 400vh;
+  }
+
+  .showdown-hud {
+    padding: 1.5rem 0 0.8rem;
+  }
+
+  .verdict-placard {
+    max-width: 680px;
+    padding: 2rem 2.2rem 1.6rem;
+  }
+
+  .climax-rewards-triumvirate {
+    gap: 1rem;
+  }
+}
+
+/* MOBILE (<= 768px): Vertical Continuous High Noon Journey */
+@media (max-width: 768px) {
+  .showdown-section {
+    height: auto !important; /* Disables sticky pin on mobile */
+    min-height: auto;
+    overflow-x: hidden !important;
+    padding: 4rem 1rem 6rem;
+  }
+
+  .showdown-pinned-stage {
+    position: relative !important;
+    height: auto !important;
+    overflow: visible !important;
+    display: block !important;
+  }
+
+  .showdown-hud {
+    flex-direction: column;
+    gap: 0.8rem;
+    padding: 0 0 1.2rem 0;
+    width: 100%;
+  }
+
+  .showdown-hud-clock {
+    align-items: flex-start;
+  }
+
+  .showdown-arena {
+    position: relative !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    perspective: none !important;
+  }
+
+  .showdown-banner-mount {
+    position: relative !important;
+    top: auto !important;
+    width: 100% !important;
+    opacity: 1 !important;
+    margin: 2rem 0 2.5rem 0;
+  }
+
+  .showdown-verdict-sequence {
+    position: relative !important;
+    height: auto !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 2rem !important;
+    width: 100% !important;
+    margin-top: 0 !important;
+  }
+
+  .verdict-placard {
+    position: relative !important;
+    opacity: 1 !important;
+    transform: none !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 1.8rem 1.4rem 1.4rem !important;
+    pointer-events: auto !important;
+  }
+
+  .placard-stamp-seal {
+    position: relative;
+    top: auto;
+    right: auto;
+    display: inline-block;
+    margin-bottom: 0.8rem;
+  }
+
+  .showdown-climax-chamber {
+    position: relative !important;
+    opacity: 1 !important;
+    transform: none !important;
+    width: 100% !important;
+    margin-top: 3.5rem !important;
+    pointer-events: auto !important;
+  }
+
+  .climax-rewards-triumvirate {
+    grid-template-columns: 1fr !important;
+    gap: 1.2rem;
+    width: 100%;
+  }
+
+  .reward-token {
+    opacity: 1 !important;
+    transform: none !important;
+    width: 100%;
+  }
+
+  .showdown-trail-bridge {
+    position: relative;
+    height: 80px;
+    margin-top: 3rem;
+  }
+}
+
+/* REDUCED MOTION */
+@media (prefers-reduced-motion: reduce) {
+  .showdown-section {
+    height: auto !important;
+    padding: 4rem 1.5rem;
+  }
+
+  .showdown-pinned-stage {
+    position: relative !important;
+    height: auto !important;
+  }
+
+  .showdown-banner-mount,
+  .verdict-placard,
+  .showdown-climax-chamber,
+  .reward-token {
+    opacity: 1 !important;
+    transform: none !important;
+    position: relative !important;
+  }
+
+  .showdown-verdict-sequence {
+    height: auto !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 2rem !important;
+  }
+
+  .showdown-climax-chamber {
+    margin-top: 3rem;
+  }
+}
